@@ -7,7 +7,7 @@ const PicModal = ({ product }) => {
 
     return <>
 
-        <div class="modal fade" id="modalPic" tabindex="-1" aria-labelledby="modalPicLabel" aria-hidden="true">
+        <div class="modal fade" id="modalPic" tabIndex="-1" aria-labelledby="modalPicLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-body">

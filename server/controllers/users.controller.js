@@ -18,6 +18,7 @@ const usersController = {
   async updateProfile(req, res, next) {
     try {
       const user = await userService.updateUserProfile(req);
+
       res.json(user);
     } catch (error) {
       next(error);
@@ -57,6 +58,23 @@ const usersController = {
       throw next(error);
     }
   },
+  async updateUserCart(req, res, next) {
+    try {
+      const user = await userService.updateUserCart(req);
+      res.json(user);
+
+    } catch (error) {
+      next(error)
+    }
+  },
+  async removeFromCart(req, res, next) {
+    try {
+      const user = await userService.removeFromCart(req)
+      res.json(user)
+    } catch (error) {
+      next(error)
+    }
+  }
 };
 
 module.exports = usersController;

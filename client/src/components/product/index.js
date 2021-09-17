@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import Loader from "../../utils/loader"
 import { productsById } from "../../store/action/product.actions"
 import { useSelector, useDispatch } from "react-redux"
@@ -16,6 +16,8 @@ const ProductDetail = (props) => {
     const product = useSelector(state => state.products.byId)
     const user = useSelector(state => state.users)
     const dispatch = useDispatch()
+    const notifications = useSelector(state => state.notifications)
+    const [buttonDisabled, setButtonDisabled] = useState(false)
 
     useEffect(() => {
         dispatch(productsById(props.match.params.id))
@@ -31,12 +33,19 @@ const ProductDetail = (props) => {
             cartModal.show()
             return false
         }
+        setButtonDisabled(!buttonDisabled)
         dispatch(userAddToCart(product))
     }
 
     useEffect(() => {
         dispatch(clearCurrentProduct())
     }, [dispatch])
+
+    useEffect(() => {
+        if (notifications && notifications.success) {
+            setButtonDisabled(!buttonDisabled)
+        }
+    }, [notifications, buttonDisabled])
 
 
     return <>
@@ -75,6 +84,7 @@ const ProductDetail = (props) => {
                                             class="btn btn-warning"
                                             type="button"
                                             onClick={() => handleAddToCart(product)}
+                                            disabled={buttonDisabled}
                                         ><span class="align-middle">Add to Cart  <MdAddShoppingCart /></span> </button>
                                     </div>
 

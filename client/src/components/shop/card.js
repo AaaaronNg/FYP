@@ -1,27 +1,13 @@
 import React from "react"
 import { MdAddShoppingCart } from "react-icons/md"
 import { Link } from "react-router-dom"
-import { Modal } from "bootstrap"
-
-import { useSelector, useDispatch } from "react-redux"
-import { userAddToCart } from "../../store/action/user.actions"
 
 
-const Card = ({ product }) => {
-    const user = useSelector(state => state.users)
-    const dispatch = useDispatch()
-    const handleAddToCart = (product) => {
-        let cartModal = new Modal(document.getElementById('CartModal'))
-        if (!user.auth) {
-            cartModal.show()
-            return false
-        }
-        if (!user.data.verified) {
-            cartModal.show()
-            return false
-        }
-        dispatch(userAddToCart(product))
-    }
+
+const Card = ({ product, handleAddToCart, buttonDisabled }) => {
+
+
+
 
     return <><div class="card shadow-sm h-100 ">
         <img src={product.images[0] ? product.images[0] : "/images/notAvailble/image_not_availble.png"} class="card-img-top" alt="not avaiable" />
@@ -44,7 +30,7 @@ const Card = ({ product }) => {
                     </Link>
                 </div>
                 <div class="p-2">
-                    <button class="btn btn-secondary" type="button" onClick={() => handleAddToCart(product)}>
+                    <button class="btn btn-secondary" type="button" disabled={buttonDisabled} onClick={() => handleAddToCart(product)}>
                         <MdAddShoppingCart />
                     </button>
                 </div>

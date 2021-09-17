@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import { MdAddShoppingCart } from "react-icons/md"
 import { useSelector, useDispatch } from "react-redux"
@@ -8,11 +8,11 @@ import { userAddToCart } from "../../store/action/user.actions"
 const CardBox = ({ items, props }) => {
     const user = useSelector(state => state.users)
     const [buttonDisabled, setButtonDisabled] = useState(false)
+    const notifications = useSelector(state => state.notifications)
     const dispatch = useDispatch()
 
     const handleAddToCart = (product) => {
-        setButtonDisabled(true)
-        console.log("start", buttonDisabled)
+
         let cartModal = new Modal(document.getElementById('CartModal'))
 
         if (!user.auth) {
@@ -23,13 +23,21 @@ const CardBox = ({ items, props }) => {
             cartModal.show()
             return false
         }
-        // dispatch(userAddToCart(product))
-        setButtonDisabled(false)
-        console.log(buttonDisabled)
-
+        setButtonDisabled(!buttonDisabled)
+        dispatch(userAddToCart(product))
 
 
     }
+
+    useEffect(() => {
+        if (notifications && notifications.success) {
+            setButtonDisabled(!buttonDisabled)
+        }
+    }, [notifications, buttonDisabled])
+
+
+
+
     const generateCard = () => (
         items ? items.map((item, i) => (
             <div class="col-sx-1" key={i}>
@@ -55,7 +63,7 @@ const CardBox = ({ items, props }) => {
 
                             </div>
                             <div class="p-2">
-                                <button id="addCart" class="btn btn-secondary" type="button" disabled={false} onClick={() => handleAddToCart(item)}>
+                                <button id="addCart" class="btn btn-secondary" type="button" disabled={buttonDisabled} onClick={() => handleAddToCart(item)}>
                                     <MdAddShoppingCart />
                                 </button>
                             </div>

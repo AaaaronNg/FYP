@@ -7,7 +7,8 @@ import {
     ADD_PRODUCT,
     GET_PROD_BY_ID,
     CLEAR_CURRENT_PRODUCT,
-    GET_CART_PROD_BY_ID
+    GET_CART_PROD_BY_ID,
+    GET_CART_PROD
 } from "../types"
 
 export default function productsReducer(state = {}, action) {
@@ -29,6 +30,8 @@ export default function productsReducer(state = {}, action) {
             return { ...state, cartProducts: action.payload }
         case CLEAR_CURRENT_PRODUCT:
             return { ...state, byId: "" }
+        case GET_CART_PROD:
+            return { ...state, byCart: action.payload }
 
         default:
             return state

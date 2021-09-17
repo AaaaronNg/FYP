@@ -52,7 +52,6 @@ const registerEmail = async (userEmail, user) => {
     await transporter.sendMail(message);
     return true;
   } catch (error) {
-    console.log(error);
     throw error;
   }
 };

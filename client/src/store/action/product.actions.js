@@ -2,6 +2,7 @@
 import axios from "axios"
 import * as actions from "./index"
 import { getAuthHeader, removeTokenCookie, getTokenCookie } from "../../utils/tools"
+import arrayPaginate from "array-paginate"
 
 axios.defaults.headers.post["Content-Type"] = "application/json"
 
@@ -105,3 +106,20 @@ export const cartProductsById = (cartProducts) => {
         }
     }
 }
+
+
+export const getCartProducts = (cartProducts, page) => {
+    return async (dispatch) => {
+        try {
+
+            let products = arrayPaginate(cartProducts, page, 2);
+            dispatch(actions.getCartProducts(products))
+
+        } catch (error) {
+            dispatch(actions.error(error.response.data.message))
+        }
+    }
+}
+
+
+

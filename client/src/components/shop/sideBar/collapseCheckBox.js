@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import { BsChevronRight, BsChevronDown } from "react-icons/bs";
 
 const CollapseCheckBox = ({ brands, handleFilters }) => {

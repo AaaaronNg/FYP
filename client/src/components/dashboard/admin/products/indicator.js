@@ -20,7 +20,7 @@ const Indicator = ({ products, changeCurrentPage }) => {
             <ul class="pagination">
 
                 <li class={products.hasPrevPage ? "page-item" : "page-item disabled"}>
-                    <a class="page-link" href="#" tabindex="-1" onClick={() => changePage(products.prevPage)}>Previous</a>
+                    <a class="page-link" tabindex="-1" onClick={() => changePage(products.prevPage)}>Previous</a>
                 </li>
                 {
                     generatePage()

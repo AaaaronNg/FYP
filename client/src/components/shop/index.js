@@ -1,4 +1,4 @@
-import React, { useReducer, useState, useEffect } from "react"
+import React, { useReducer, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { productsByPaginate } from "../../store/action/product.actions"
 import { getAllBrands } from "../../store/action/brand.actions"

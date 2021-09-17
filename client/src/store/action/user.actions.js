@@ -113,6 +113,7 @@ export const userUpdateProfile = (data) => {
 export const userAddToCart = (item) => {
     return async (dispatch) => {
         try {
+
             const cart = await axios.patch("/api/users/updateCart", {
                 product: item
             }, getAuthHeader())
@@ -126,4 +127,40 @@ export const userAddToCart = (item) => {
         }
     }
 }
+
+export const removeFromCart = (item) => {
+    return async (dispatch) => {
+        try {
+
+            const cart = await axios.patch("/api/users/removeFromCart", {
+                id: item._id
+            }, getAuthHeader())
+
+            dispatch(actions.userAddToCart(
+                cart.data.cart
+            ))
+
+            dispatch(actions.success(`${item.name} remove to cart !`))
+        } catch (error) {
+            dispatch(actions.error(error.response.data.message))
+        }
+    }
+}
+
+export const userPurchaseSuccess = (orderId) => {
+    return async (dispatch) => {
+        try {
+
+            const user = await axios.post("/api/transaction", { orderId }, getAuthHeader())
+            dispatch(actions.success("Thank you for your purchase"))
+            dispatch(actions.userPurchaseSuccess(user.data))
+
+
+        } catch (error) {
+            dispatch(actions.error(error.response.data.message))
+        }
+    }
+}
+
+
 

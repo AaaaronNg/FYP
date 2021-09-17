@@ -16,7 +16,9 @@ import {
     GET_PROD_BY_ID,
     CLEAR_CURRENT_PRODUCT,
     USER_ADD_TO_CART,
-    GET_CART_PROD_BY_ID
+    GET_CART_PROD_BY_ID,
+    GET_CART_PROD,
+    PURCHASE_SUCCESS
 } from "../types"
 
 
@@ -48,6 +50,11 @@ export const updateUserEmail = (data) => ({
 
 export const userAddToCart = (data) => ({
     type: USER_ADD_TO_CART,
+    payload: data
+})
+
+export const userPurchaseSuccess = (data) => ({
+    type: PURCHASE_SUCCESS,
     payload: data
 })
 
@@ -95,6 +102,11 @@ export const clearCurrentProduct = () => ({
 
 export const cartProductsById = (products) => ({
     type: GET_CART_PROD_BY_ID,
+    payload: products
+})
+
+export const getCartProducts = (products) => ({
+    type: GET_CART_PROD,
     payload: products
 })
 
