@@ -11,7 +11,7 @@ const addTransaction = async (req) => {
 
     try {
         order = await payPalClient.client.execute(request)
-        console.log(order)
+
         const transaction = new Transaction({
             userID: req.user._id,
             userEmail: req.user.email,

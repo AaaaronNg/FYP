@@ -9,7 +9,7 @@ import Login from "./components/auth/login"
 import { useDispatch, useSelector } from "react-redux"
 import Loader from "./utils/loader"
 import { userIsAuth, userLogout } from "./store/action/user.actions";
-import PurchaseHis from "./components/dashboard/user/purchaseHis"
+import PurchaseHis from "./components/dashboard/user/purchaseHis/index"
 import MyCart from "./components/dashboard/user/mycart/index"
 import RouteGuard from "./hoc/routeGuard"
 import UserInfo from "./components/dashboard/info"
@@ -51,7 +51,9 @@ function Routes() {
               <Route path="/dashboard/user_info" component={RouteGuard(UserInfo)} />
               <Route path="/dashboard/admin/add_products" component={RouteGuard(AddProduct)} />
               <Route path="/dashboard/user_cart" component={RouteGuard(MyCart)} />
+              <Route path="/dashboard/purchase_history" component={RouteGuard(PurchaseHis)} />
               <Route path="/product_detail/:id" component={ProductDetail} />
+              <Route path="/verify" component={RouteGuard(RouteGuard(PurchaseHis))} />
               <Route path="/login" component={Login} />
               <Route path="/shop" component={Shop} />
               <Route path="/register" component={AuthForm} />
@@ -61,7 +63,6 @@ function Routes() {
           <Footer />
         </>
     }
-
   </BrowserRouter>;
 }
 

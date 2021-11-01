@@ -86,7 +86,6 @@ const UserInfo = ({ users }) => {
                                     ) : null}
                                 </div>
                             </div>
-
                         </div>
 
                         <button class="btn btn-primary btn-sm" type="submit">Update Profile</button>

@@ -45,11 +45,15 @@ const usersController = {
       const token = await userService.validateToken(req.query.validation);
       const user = await userService.findUserById(token.sub);
 
+
       if (!user) throw new ApiError(httpStatus.NOT_FOUND, "User not found");
-      if (user.verified)
+      if (user.verified) {
         throw new ApiError(httpStatus.BAD_REQUEST, "Already verified");
+      }
+
 
       user.verified = true;
+
       user.save();
       res.status(httpStatus.CREATED).send({
         user,
