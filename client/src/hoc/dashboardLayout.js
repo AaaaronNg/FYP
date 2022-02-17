@@ -23,6 +23,10 @@ const DashboardLayout = (props) => {
         {
             name: "My Cart",
             link: "/dashboard/user_cart"
+        },
+        {
+            name: "My Second-Hand Product",
+            link: "/dashboard/user_SHP"
         }
 
     ]
@@ -43,7 +47,6 @@ const DashboardLayout = (props) => {
             <li key={i} class="nav-item pb-2">
                 <Link class="text-decoration-none text-dark" to={item.link} key={i}>
                     {item.name}
-
                 </Link>
             </li>
 

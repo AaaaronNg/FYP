@@ -7,7 +7,8 @@
     "start": "node server/server.js",
     "server": "nodemon server/server.js",
     "client": "npm start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "socket": "npm start --prefix socket",
+    "dev": "concurrently \"npm run socket\" \"npm run server\" \"npm run client\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -24,6 +25,7 @@
     "express-mongo-sanitize": "^2.1.0",
     "express-validator": "^6.12.0",
     "http-status": "^1.5.0",
+    "install": "^0.13.0",
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.21",
     "mailgen": "^2.0.15",
@@ -33,6 +35,7 @@
     "nodemon": "^2.0.7",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
+    "socket.io": "^4.4.1",
     "validator": "^13.6.0",
     "xss-clean": "^0.1.1"
   }

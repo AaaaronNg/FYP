@@ -1,6 +1,9 @@
 const { userService, authService, emailService } = require("../services");
 const httpStatus = require("http-status");
 const { ApiError } = require("../middleware/apiError");
+require("dotenv").config;
+
+
 
 const usersController = {
   async profile(req, res, next) {
@@ -44,6 +47,7 @@ const usersController = {
     try {
       const token = await userService.validateToken(req.query.validation);
       const user = await userService.findUserById(token.sub);
+      console.log(token)
 
 
       if (!user) throw new ApiError(httpStatus.NOT_FOUND, "User not found");
@@ -54,10 +58,14 @@ const usersController = {
 
       user.verified = true;
 
-      user.save();
-      res.status(httpStatus.CREATED).send({
-        user,
-      });
+      await user.save();
+      res.redirect(`${process.env.EMAIL_MAIL_URL}verify`);
+
+
+
+      // res.status(httpStatus.CREATED).send({
+      //   user,
+      // });
     } catch (error) {
       throw next(error);
     }

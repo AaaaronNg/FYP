@@ -92,14 +92,22 @@ export const userUpdateProfile = (data) => {
                 lastname: data.lastname,
             }, getAuthHeader())
 
+            console.log(data.email)
+
+            const newEmail = await axios.patch("/api/users/email", {
+                newemail: data.email,
+            }, getAuthHeader())
+
             const userData = {
                 ...getState().users.data,
                 firstname: profile.data.firstname,
                 lastname: profile.data.lastname,
             }
 
+
+
             dispatch(actions.updateUserProfile(userData))
-            dispatch(actions.updateUserEmail(data.email))
+            dispatch(actions.updateUserEmail(newEmail.data.user.email))
             dispatch(actions.success("Profile Updated !!"))
 
 

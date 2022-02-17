@@ -78,7 +78,7 @@ const CartDetail = (props) => {
                                         <span >$ {getProductTotal(cartProducts)}</span>
                         </span>
                     </div>
-                    <div class="p-3">
+                    <div class="p-3 text-center">
                         {
                             loading ? <Loader /> :
 
@@ -99,7 +99,6 @@ const CartDetail = (props) => {
                                         // console.log(details)
                                         // console.log(data)
                                         dispatch(userPurchaseSuccess(details.id))
-
                                         setLoading(true)
                                     }}
 

@@ -39,8 +39,8 @@ const AddProduct = (props) => {
                 .required("woodtype is required"),
             description: Yup.string()
                 .required("Description is required"),
-            price: Yup.number().required("Price is require")
-                .min(1, "the min price is 1")
+            price: Yup.number().required("Price is required")
+                .min(1, "the min price is $1")
                 .max(100000, "the max price is 100000"),
             available: Yup.number()
                 .required("In Stock?")

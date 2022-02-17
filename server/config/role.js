@@ -13,7 +13,9 @@ let grantsObject = {
     brand: allRights,
     product: allRights,
     site: allRights,
-    transaction: allRights
+    transaction: allRights,
+    category: allRights,
+    secondHandProduct: allRights
   },
   user: {
     profile: {

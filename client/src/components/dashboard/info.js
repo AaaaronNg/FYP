@@ -37,6 +37,8 @@ const UserInfo = ({ users }) => {
     useEffect(() => {
         if (notifications && notifications.success) {
             setLoading(false)
+        } else {
+            setLoading(false)
         }
     }, [notifications])
 
@@ -87,6 +89,8 @@ const UserInfo = ({ users }) => {
                                 </div>
                             </div>
                         </div>
+
+
 
                         <button class="btn btn-primary btn-sm" type="submit">Update Profile</button>
                     </form>

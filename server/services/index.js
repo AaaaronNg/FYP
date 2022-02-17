@@ -5,3 +5,7 @@ module.exports.brandService = require("./brand.service");
 module.exports.productsService = require("./products.service");
 module.exports.siteService = require("./site.service");
 module.exports.transactionService = require("./transaction.service")
+module.exports.categoryService = require("./category.service");
+module.exports.secondHandProductService = require("./secondHandProducts.service")
+module.exports.conversationService = require("./conversation.service")
+module.exports.messageService = require("./message.service")

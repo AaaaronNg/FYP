@@ -17,6 +17,10 @@ import AdminProducts from "./components/dashboard/admin/products"
 import AddProduct from "./components/dashboard/admin/products/add/index"
 import Shop from "./components/shop/index"
 import ProductDetail from "./components/product";
+import VerifyPage from "./components/auth/verifyPage/index"
+import MySecondHandProduct from "./components/dashboard/user/secondHandProduct/index"
+import SecondHandMarket from "./components/SHP_display/index"
+import Inbox from "./components/Inbox/index"
 
 function Routes() {
   const [loading, setLoading] = useState(true)
@@ -52,8 +56,11 @@ function Routes() {
               <Route path="/dashboard/admin/add_products" component={RouteGuard(AddProduct)} />
               <Route path="/dashboard/user_cart" component={RouteGuard(MyCart)} />
               <Route path="/dashboard/purchase_history" component={RouteGuard(PurchaseHis)} />
+              <Route path="/dashboard/user_SHP" component={RouteGuard(MySecondHandProduct)} />
+              <Route path="/inbox" component={RouteGuard(Inbox)} />
               <Route path="/product_detail/:id" component={ProductDetail} />
-              <Route path="/verify" component={RouteGuard(RouteGuard(PurchaseHis))} />
+              <Route path="/verify" component={RouteGuard(VerifyPage)} />
+              <Route path="/SHP" component={SecondHandMarket} />
               <Route path="/login" component={Login} />
               <Route path="/shop" component={Shop} />
               <Route path="/register" component={AuthForm} />

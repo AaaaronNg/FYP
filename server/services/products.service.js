@@ -150,7 +150,9 @@ const paginateProducts = async (req) => {
       { $unwind: "$brand" }
     );
 
+
     let aggQuery = Product.aggregate(aggQueryArray);
+
     const options = {
       page: req.body.page,
       limit: 4,

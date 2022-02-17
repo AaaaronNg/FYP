@@ -18,7 +18,7 @@ const MyCart = (props) => {
 
                         <CartDetail {...props} />
                     </>
-                    : <div>there is nothing in your cart</div>
+                    : <div>there is nothing in your cart :(</div>
             }
 
         </DashboardLayout>

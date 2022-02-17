@@ -18,7 +18,10 @@ import {
     USER_ADD_TO_CART,
     GET_CART_PROD_BY_ID,
     GET_CART_PROD,
-    PURCHASE_SUCCESS
+    PURCHASE_SUCCESS,
+    GET_ALL_CATEGORIES,
+    GET_SHP_PAGINATE,
+    CLEAR_SHP_PAGINATE
 } from "../types"
 
 
@@ -65,6 +68,12 @@ export const getAllBrands = (brands) => ({
     payload: brands
 })
 
+// category
+export const getAllCategories = (categories) => ({
+    type: GET_ALL_CATEGORIES,
+    payload: categories
+})
+
 
 // product
 export const productsBySold = (data) => ({
@@ -109,6 +118,20 @@ export const getCartProducts = (products) => ({
     type: GET_CART_PROD,
     payload: products
 })
+
+// SHPs
+export const SHPsByPaginate = (shps) => ({
+    type: GET_SHP_PAGINATE,
+    payload: shps
+})
+
+export const clearPaginate = () => {
+    return (dispatch) => {
+        dispatch({
+            type: CLEAR_SHP_PAGINATE
+        })
+    }
+}
 
 
 ///

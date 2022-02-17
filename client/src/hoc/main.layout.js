@@ -5,13 +5,14 @@ import { clearNotification } from "../store/action/index"
 import CartModal from "../utils/products/cartModal"
 
 
+// notifications 
+
 
 const MainLayout = (props) => {
     const [info, setInfo] = useState({ show: false, msg: "" })
     const dispatch = useDispatch()
     const notifications = useSelector(state => state.notifications)
     useEffect(() => {
-        console.log("useEffect")
 
         if ((notifications && notifications.error) || notifications.success) {
             setInfo(prevState => ({

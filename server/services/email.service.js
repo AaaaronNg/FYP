@@ -17,14 +17,14 @@ const registerEmail = async (userEmail, user) => {
     let mailGenerator = new Mailgen({
       theme: "default",
       product: {
-        name: "e_comm",
+        name: "Bro, we study music ga",
         link: `${process.env.EMAIL_MAIL_URL}`,
       },
     });
 
     const email = {
       body: {
-        name: userEmail,
+        name: user.firstname,
         intro: "We are happy you signed for us !!!",
         action: {
           instructions:
@@ -32,7 +32,7 @@ const registerEmail = async (userEmail, user) => {
           button: {
             color: "#22BC66",
             text: "Verify Now",
-            link: `${process.env.SITE_DOMAIN}verification?t=${emailToken}`,
+            link: `${process.env.SITE_DOMAIN}api/users/verify/?validation=${emailToken}`,
           },
         },
         outro:
