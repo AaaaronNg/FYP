@@ -30,6 +30,9 @@ let grantsObject = {
     },
     transaction: {
       "create:any": ["*"], "read:any": ["*"]
+    },
+    secondHandProduct: {
+      "create:any": ["*"], "read:any": ["*"]
     }
   },
 };

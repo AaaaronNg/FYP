@@ -8,17 +8,26 @@ import * as Yup from "yup"
 import { SHPsByPaginate } from "../../store/action/SHP.actions"
 import Lorder from "../../utils/loader"
 import { clearPaginate } from "../../store/action/index"
+import axios from "axios";
 
 const initValues = { keywords: "", category: [], page: 1 }
 
-const SHP = () => {
+const SHP = (props) => {
 
     const dispatch = useDispatch()
     const [id, setId] = useState(null)
+    const [sellerId, setSellerId] = useState(null)
     const categories = useSelector(state => state.categories)
+    const currentUserId = useSelector(state => state.users.data._id)
+
+
 
 
     const SHPsDoc = useSelector(state => state.SHPs.bySHPsPaginate)
+    const [searchValues, setSearchValues] = useReducer(
+        (state, newState) => ({ ...state, ...newState }),
+        initValues
+    )
 
     const getCategoryId = (id) => {
         setId(id)
@@ -26,10 +35,33 @@ const SHP = () => {
         categoryArr.push(id)
         setSearchValues({ category: categoryArr })
     }
-    const [searchValues, setSearchValues] = useReducer(
-        (state, newState) => ({ ...state, ...newState }),
-        initValues
-    )
+
+    const getSellerId = (sellerId) => {
+        console.log("sellerId", sellerId)
+        console.log(currentUserId)
+
+        const addConversation = async () => {
+            if (sellerId !== currentUserId) {
+                try {
+                    console.log("hello")
+                    await axios.post("/api/conversations/", {
+                        senderId: sellerId,
+                        currentUserId: currentUserId
+                    })
+                } catch (error) {
+                    console.log(error)
+                }
+            }
+
+        }
+        addConversation()
+
+        setTimeout(function () {
+            props.history.push("/inbox")
+        }, 1000);
+
+    }
+
 
     const formik = useFormik({
         initialValues: { keyword: "" },
@@ -79,7 +111,11 @@ const SHP = () => {
                 </form>
             </div>
             {
-                SHPsDoc ? <CardBox SHPsDoc={SHPsDoc} /> : <Lorder />
+                SHPsDoc ? <CardBox
+                    SHPsDoc={SHPsDoc}
+                    getSellerId={getSellerId}
+                    currentUserId={currentUserId}
+                /> : <Lorder />
             }
 
 

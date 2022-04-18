@@ -29,6 +29,7 @@ function Routes() {
 
   const logoutUser = () => {
     // alert("logoutUser")
+
     dispatch(userLogout())
   }
 

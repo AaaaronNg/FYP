@@ -78,10 +78,12 @@ const CardBox = ({ items, props }) => {
 
     return <>
 
-        <h5 class="text-center py-4">Best selling items</h5>
+        <h5 class="text-center fs-1 py-4">Best selling items</h5>
+
         <div class="row row-cols-sm-2  row-cols-md-4 g-4 px-3">
             {generateCard()}
         </div>
+
 
 
 

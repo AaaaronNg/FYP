@@ -5,6 +5,18 @@ import { getAuthHeader, removeTokenCookie, getTokenCookie } from "../../utils/to
 axios.defaults.headers.post["Content-Type"] = "application/json"
 
 
+export const findUserById = (id) => {
+    return async (dispatch) => {
+        try {
+            const user = await axios.get(`/api/users/user/${id}`)
+            console.log(user.data)
+        } catch (error) {
+            dispatch(actions.error(error.response.data.message))
+        }
+    }
+}
+
+
 export const userRegister = (values) => {
     return async (dispatch) => {
         try {

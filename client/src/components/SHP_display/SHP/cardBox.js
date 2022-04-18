@@ -4,14 +4,14 @@ import SHPsContent from "./SHPsContent"
 
 
 
-const CardBox = ({ SHPsDoc }) => {
+const CardBox = ({ SHPsDoc, getSellerId, currentUserId }) => {
 
 
 
 
     return <>
 
-        <SHPsContent SHPsDoc={SHPsDoc} />
+        <SHPsContent SHPsDoc={SHPsDoc} getSellerId={getSellerId} currentUserId={currentUserId} />
     </>
 }
 

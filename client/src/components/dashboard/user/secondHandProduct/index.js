@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react"
 import DashboardLayout from "../../../../hoc/dashboardLayout"
 import { useSelector, useDispatch } from "react-redux"
 import { useFormik } from "formik"
+import Modal from "./modal"
 import Loader from "../../../../utils/loader"
 import SHPlist from "./SHPlist"
-import { SHPsByPaginate } from "../../../../store/action/SHP.actions"
+import { SHPsByPaginate, SHPremoveById } from "../../../../store/action/SHP.actions"
 import { getAllCategories } from "../../../../store/action/category.actions"
+
 import AddSHPmodal from "./addSHPmodal"
 import { clearPaginate } from "../../../../store/action/index"
 
@@ -22,9 +24,9 @@ const AddSecondHandProduct = (props) => {
         setSHPid(id)
     }
 
-    // const removeSHPbyId = () => {
-    //     dispatch(SHPid)
-    // }
+    const removeSHPbyId = () => {
+        dispatch(SHPremoveById(SHPid))
+    }
 
     // useEffect(() => {
     //     dispatch(clearPaginate())
@@ -34,7 +36,7 @@ const AddSecondHandProduct = (props) => {
         dispatch(clearPaginate())
         let userIDArr = []
         userIDArr.push(user_id)
-        dispatch(SHPsByPaginate({ userID: userIDArr }))
+        dispatch(SHPsByPaginate({ userID: userIDArr, page: 1 }))
     }, [dispatch, user_id])
 
     useEffect(() => {
@@ -61,6 +63,8 @@ const AddSecondHandProduct = (props) => {
                 </>
                     : <Loader />
             }
+
+            <Modal removeSHPbyId={() => removeSHPbyId()} />
 
 
         </DashboardLayout>

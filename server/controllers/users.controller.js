@@ -1,6 +1,7 @@
 const { userService, authService, emailService } = require("../services");
 const httpStatus = require("http-status");
 const { ApiError } = require("../middleware/apiError");
+const { find } = require("lodash");
 require("dotenv").config;
 
 
@@ -82,6 +83,15 @@ const usersController = {
   async removeFromCart(req, res, next) {
     try {
       const user = await userService.removeFromCart(req)
+      res.json(user)
+    } catch (error) {
+      next(error)
+    }
+  },
+  async findUserById(req, res, next) {
+    try {
+      const id = req.params.id
+      const user = await userService.findUserById(id)
       res.json(user)
     } catch (error) {
       next(error)

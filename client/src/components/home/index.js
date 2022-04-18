@@ -24,6 +24,14 @@ const Home = (props) => {
                 bySold ? <CardBox items={bySold} props={props} /> : <Lorder class="pt-4" />
             }
 
+            <div class="container py-5">
+                <div class="ratio ratio-16x9">
+                    <iframe src="https://www.youtube.com/embed/Anop2dCuR2g" title="YouTube video" allowfullscreen></iframe>
+                </div>
+            </div>
+
+
+
         </>
     )
 }

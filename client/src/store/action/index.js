@@ -21,7 +21,8 @@ import {
     PURCHASE_SUCCESS,
     GET_ALL_CATEGORIES,
     GET_SHP_PAGINATE,
-    CLEAR_SHP_PAGINATE
+    CLEAR_SHP_PAGINATE,
+    REMOVE_SHP
 } from "../types"
 
 
@@ -124,6 +125,12 @@ export const SHPsByPaginate = (shps) => ({
     type: GET_SHP_PAGINATE,
     payload: shps
 })
+
+export const SHPremove = () => ({
+    type: REMOVE_SHP
+})
+
+
 
 export const clearPaginate = () => {
     return (dispatch) => {

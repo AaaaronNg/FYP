@@ -2,9 +2,9 @@ import React from "react"
 import Loader from "../../../utils/loader"
 import Card from "./Card"
 
-const SHPsContent = ({ SHPsDoc }) => {
+const SHPsContent = ({ SHPsDoc, getSellerId, currentUserId }) => {
 
-
+    console.log(SHPsDoc)
 
 
     return <>
@@ -17,7 +17,7 @@ const SHPsContent = ({ SHPsDoc }) => {
                                 {
                                     SHPsDoc.docs.map((item, i) => (
                                         <div class="col">
-                                            <Card item={item} />
+                                            <Card item={item} getSellerId={getSellerId} currentUserId={currentUserId} />
                                         </div>
                                     ))
                                 }

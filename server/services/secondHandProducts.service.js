@@ -67,6 +67,7 @@ const allSHPs = async (req) => {
             .populate("category")
             .sort([[req.query.sortBy, req.query.order]])
             .limit(parseInt(req.query.limit))
+
         return shps;
     } catch (error) {
         throw error
@@ -121,7 +122,9 @@ const paginateSHPs = async (req) => {
             limit: 8,
             sort: { date: "desc" }
         }
-        const shps = await SecondHandProduct.aggregatePaginate(aggQuery, options);
+        const shps = await SecondHandProduct
+            .aggregatePaginate(aggQuery, options)
+
         return shps
     } catch (error) {
         throw error

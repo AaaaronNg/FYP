@@ -10,7 +10,8 @@ const Messagebox = ({ user, messages }) => {
 
 
     useEffect(() => {
-        scrollRef.current?.scrollIntoView({ behavior: "smooth" })
+        scrollRef.current.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' })
+
     }, [messages])
 
 

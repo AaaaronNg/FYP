@@ -9,9 +9,9 @@ axios.defaults.headers.post["Content-Type"] = "application/json"
 export const addSHP = (SHPdata) => {
     return async (dispatch) => {
         try {
-            //SHPdata = { ...SHPdata, }
+
             await axios.post("/api/secondHandProducts/", SHPdata, getAuthHeader())
-            dispatch(actions.success("Your product had been added"))
+            dispatch(actions.success("Your product had been uploaded"))
         } catch (error) {
             dispatch(actions.error(error.response.data.message))
         }
@@ -21,6 +21,7 @@ export const addSHP = (SHPdata) => {
 export const SHPsByPaginate = (args) => {
     return async (dispatch) => {
         try {
+            //console.log(args)
             const shps = await axios.post("/api/secondHandProducts/paginate/all", args)
             dispatch(actions.SHPsByPaginate(shps.data))
         } catch (error) {
@@ -29,11 +30,13 @@ export const SHPsByPaginate = (args) => {
     }
 }
 
-export const SHPremove = (id) => {
+export const SHPremoveById = (id) => {
     return async (dispatch) => {
         try {
-            await axios.delete(`/api/products/product/${id}`, getAuthHeader())
-
+            //console.log(id)
+            await axios.delete(`/api/secondHandProducts/secondHandProduct/${id}`, getAuthHeader())
+            dispatch(actions.SHPremove())
+            dispatch(actions.success("Your product had been removed"))
         } catch (error) {
             dispatch(actions.error(error.response.data.message))
         }

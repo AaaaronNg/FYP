@@ -96,8 +96,6 @@ const CartDetail = (props) => {
                                     }}
 
                                     onSuccess={(details, data) => {
-                                        // console.log(details)
-                                        // console.log(data)
                                         dispatch(userPurchaseSuccess(details.id))
                                         setLoading(true)
                                     }}

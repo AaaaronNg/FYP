@@ -26,13 +26,15 @@ const SHPlist = ({ SHPsDoc, getSHPid }) => {
                             <td class="align-middle">{item.name}</td>
                             <td class="align-middle">${item.price}</td>
                             <td>
-                                <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() => getSHPid(item._id)}>Remove</button>
+                                <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#SHPModal" onClick={() => getSHPid(item._id)}>Remove</button>
                             </td>
                         </tr>
                     ))
                 }
             </tbody>
         </table>
+
+
 
     </>
 }

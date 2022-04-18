@@ -26,20 +26,16 @@ const Inbox = (props) => {
 
     useEffect(() => {
         socket.current = io("ws://localhost:8900")
+
         socket.current.on("getMessage", data => {
             console.log(data)
             setMessages((prev) => [...prev, data])
         })
     }, [])
 
-    //console.log(arrivalMessage)
+    console.log(conversations)
 
-    // useEffect(() => {
-    //        if(arrivalMessage && ){
-    //         setMessages((prev) => [...prev, arrivalMessage])
-    //        }
 
-    // }, [arrivalMessage, messages])
 
     useEffect(() => {
         socket.current.emit("addUser", user.data._id)
@@ -98,7 +94,7 @@ const Inbox = (props) => {
                 setMessages([...messages, res.data])
                 //console.log(receiver)
                 const receiverId = receiver._id
-                console.log(receiverId)
+
                 socket.current.emit("sendMessage", receiverId, res.data)
             } catch (error) {
                 console.log(error)
@@ -108,11 +104,7 @@ const Inbox = (props) => {
         formik.values.text = ""
         document.getElementById("text").value = ""
 
-
-
-
     }
-
     //console.log(messages)
 
 
@@ -145,9 +137,6 @@ const Inbox = (props) => {
                                 getReceiverId={(id) => getReceiverId(id)}
                             />
                         </div>
-
-
-
                     </div>
 
                     <div class="col-12 col-lg-7 col-xl-9 ">

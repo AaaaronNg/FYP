@@ -61,7 +61,6 @@ const AddProduct = (props) => {
 
     const handleImgValues = (img) => {
         const imgArr = formik.values.images
-
         imgArr.push(img.url)
         formik.setFieldValue("images", imgArr)
     }

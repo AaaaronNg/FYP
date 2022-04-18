@@ -27,5 +27,6 @@ router.patch(
 )
 
 router.get("/verify", usersController.verifyAccount);
+router.get("/user/:id", usersController.findUserById)
 
 module.exports = router;

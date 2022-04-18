@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import DeleteModal from "./deleteModal"
-import { Modal } from "bootstrap"
+
 
 
 const Viewer = ({ formik, deleteImg }) => {

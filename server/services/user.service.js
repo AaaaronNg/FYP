@@ -23,7 +23,7 @@ const updateUserCart = async (req) => {
   try {
 
     let duplicate = false;
-
+    //console.log(req.user);
     req.user.cart.forEach((item) => {
       if (req.body.product._id == item._id) {
         duplicate = true

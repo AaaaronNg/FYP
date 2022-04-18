@@ -7,11 +7,28 @@ const mongoose = require("mongoose");
 
 const addConversation = async (body) => {
     try {
-        const conversation = new Conversation({
-            ...body,
+
+        const exist = await Conversation.find({
+            currentUserId: body.currentUserId,
+            senderId: body.senderId
         })
-        await conversation.save()
-        return conversation
+
+        //console.log("exit", exist.length)
+
+        if (exist.length === 0) {
+            console.log("new")
+            const conversation = new Conversation({
+                ...body,
+            })
+            const conversation_2 = new Conversation({
+                currentUserId: body.senderId,
+                senderId: body.currentUserId
+            })
+            await conversation_2.save()
+            await conversation.save()
+            return conversation
+        }
+        return exist
     } catch (error) {
         throw error
     }

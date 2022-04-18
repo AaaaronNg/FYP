@@ -3,6 +3,7 @@ const { conversationService } = require("../services")
 const conversationController = {
     async addConversation(req, res, next) {
         try {
+            //console.log(req.body)
             const conversation = await conversationService.addConversation(req.body)
 
             res.json(conversation)

@@ -38,3 +38,4 @@ export const GET_ALL_CATEGORIES = "get_all_categories"
 // SHP
 export const GET_SHP_PAGINATE = "get_SHP_paginate"
 export const CLEAR_SHP_PAGINATE = "clear_SHP_paginate"
+export const REMOVE_SHP = "remove_shp"
